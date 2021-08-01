@@ -32,7 +32,7 @@ range.methods = {
  }; 
  
 // 这里是使用"范围对象"的一些例子
-var r = range(1, 3);    // 创建一个范围对象 
-r.includes(2);           // => true: 2 在这个范围内 
-r.foreach(console.log); // 输出 1 2 3 
-console.log(r);         // 输出 (1...3)
+// var r = range(1, 3);    // 创建一个范围对象 
+// r.includes(2);           // => true: 2 在这个范围内 
+// r.foreach(console.log); // 输出 1 2 3 
+// console.log(r);         // 输出 (1...3)
