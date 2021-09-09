@@ -57,6 +57,82 @@ function inherit(p) {
 当函数读取继承对象的属性时，实际上读取的是继承来的值。
 如果给继承对象的属性赋值，则这些属性只会影响这个继承对象自身，而不是原始对象： */
 var o = { x: "don't change this value" }; 
-library_function(inherit(o));   // 防止对o的意外修改
+// library_function(inherit(o));   // 防止对o的意外修改
 
+/* 6.2、属性的查询和设置 */
+var author = book.author; // 得到book的“author”属性
+var name = author.surname; // 得到获得author的“surname”属性
+var title = book["main title"]; // 得到book的"main title"属性
+
+/* 6.2.1、作为关联数组的对象 */
+// 示例1
+var customer = {
+	"address0":"中国",
+	"address1":"山东省",
+	"address2":"济南市",
+	"address3":"历下区"
+	};
+var addr = "";
+for(i = 0; i < 4; i++){
+	addr += customer["address" + i];
+}
+
+// 示例2
+var portfolio = {};
+function addstock(stockname, shares){
+	portfolio[stockname] = shares;
+}
+addstock("Ali", 1);
+addstock("BaiDu", 2);
+addstock("Ten", 3);
+
+function getValue(){
+	var total = 0.0;
+	for(stock in portfolio){
+		var shares = portfolio[stock];
+		var price = 2;
+		total += shares * price;
+	}
+	return total;
+}
+var total1 = getValue();
+
+/* 6.2.2、继承 
+
+*/
+var o = {}      // o 从 Object.prototype 继承对象的方法 
+o.x = 1;        // 给o定义一个属性x 
+var p = inherit(o); // p继承o和Object.prototype 
+p.y = 2;        // 给p定义一个属性y 
+var q = inherit(p); // q继承p、o和Object.prototype 
+q.z = 3;        // 给q定义一个属性z 
+var s = q.toString(); // toString继承自Object.prototype 
+console.log(q.x + q.y)       // => 3: x和y分别继承自o和p
+
+/* 在JavaScript中，只有在查询属性时才会体会到继承的存在，而设置属性则和继承无关，
+这是JavaScript的一个重要特性，该特性让程序员可以有选择地覆盖（override）继承的属性。 */
+var unitcircle = { r:1 };       // 一个用来继承的对象 
+var c = inherit(unitcircle);    // c继承属性r 
+c.x = 1; c.y = 1;               // c定义两个属性 
+c.r = 2;                        // c覆盖继承来的属性 
+console.log(unitcircle.r);                   // => 1，原型对象没有修改
+
+/* 6.2.3、属性访问错误 */
+book.subtitle // undefined：属性不存在
+// 抛出一个类型错误异常，undefined没有length属性 
+// var len = book.subtitle.length;	// Uncaught TypeError: Cannot read properties of undefined (reading 'length')
+
+// 两种避免出错的方法
+// 一种冗余但很易懂的方法 
+var len = undefined; 
+if (book) {     
+	if (book.subtitle) 
+	len = book.subtitle.length; 
+} 
+// 一种更简练的常用方法，获取subtitle的length属性或undefined 
+var len = book && book.subtitle && book.subtitle.length;
+
+// 内置构造函数的原型是只读的 
+Object.prototype = 0;   // 赋值失败，但没报错，Object.prototype没有修改
 debugger
+
