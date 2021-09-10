@@ -134,5 +134,31 @@ var len = book && book.subtitle && book.subtitle.length;
 
 // 内置构造函数的原型是只读的 
 Object.prototype = 0;   // 赋值失败，但没报错，Object.prototype没有修改
-debugger
 
+
+/* 6.3 删除属性 */
+delete book.author;            // book不再有属性author 
+delete book["main title"];     // book也不再有属性"main title"
+
+o = {x:1};              // o有一个属性x，并继承属性toString 
+delete o.x;             // 删除x，返回true 
+delete o.x;             // 什么都没做（x已经不存在了），返回true 
+delete o.toString;      // 什么也没做（toString是继承来的），返回true
+delete 1;               // 无意义，返回true
+
+delete Object.prototype;// 不能删除，属性是不可配置的 
+var x = 1;              // 声明一个全局变量 
+delete this.x;          // 不能删除这个属性 
+function f() {}         // 声明一个全局函数 
+delete this.f;          // 也不能删除全局函数
+this.x = 1;     // 创建一个可配置的全局属性（没有用var） 
+delete x;       // 将它删除
+
+delete x;       //在严格模式下报语法错误 
+delete this.x;  //正常工作
+
+a={p:{x:1}};
+b=a.p;
+delete a.p; // 执行这段代码之后b.x的值依然是1。由于已经删除的属性的引用依然存在，因此在JavaScript的某些实现中，可能因为这种不严谨的代码而造成内存泄漏。所以在销毁对象的时候，要遍历属性中的属性，依次删除。
+
+debugger
