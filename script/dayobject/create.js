@@ -286,4 +286,32 @@ function keys(o) {
 	return result;                              // 返回这个数组 
 }
 
+
+/* 6.10 对象方法 */
+o.toString(); // 返回'[object Object]'
+
+/* Object中默认的toLocaleString（）方法并不做任何本地化自身的操作，它仅调用toString（）方法并返回对应值。
+Date和Number类对toLocaleString（）方法做了定制，可以用它对数字、日期和时间做本地化的转换。 */
+/* Object */
+o.toLocaleString(); // 返回'[object Object]'
+/* 日期 */
+var date = new Date(); // Mon Sep 13 2021 14:05:11 GMT+0800 (中国标准时间)
+date.toLocaleString(); // 返回'2021/9/13 下午2:05:11'
+date.toLocaleDateString(); // 返回'2021/9/13'
+date.toLocaleTimeString(); // 返回'下午2:05:11'
+
+var s = 3;
+
+/* Date.prototype.toJSON() */
+var date = new Date();
+console.log(date); //Mon Sep 13 2021 14:20:46 GMT+0800 (中国标准时间)
+
+var jsonDate = (date).toJSON();
+console.log(jsonDate); //2021-09-13T06:20:46.973Z
+
+var backToDate = new Date(jsonDate);
+console.log(backToDate); //Mon Sep 13 2021 14:20:46 GMT+0800 (中国标准时间)
+
+
+
 debugger
