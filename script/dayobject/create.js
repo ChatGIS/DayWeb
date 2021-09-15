@@ -285,7 +285,66 @@ function keys(o) {
 	}     
 	return result;                              // 返回这个数组 
 }
+/* 6.8 对象的三个属性 */
+/* 
+ *通过对象直接量创建的对象使用Object.prototype作为它们的原型。
+ *通过new创建的对象使用构造函数的prototype属性作为它们的原型。
+ *通过Object.create（）创建的对象使用第一个参数（也可以是null）作为它们的原型。 */
+Object.getPrototypeOf(book) == Object.prototypeObject; // 返回true
 
+/* 要想检测一个对象是否是另一个对象的原型（或处于原型链中），请使用isPrototypeOf（）方法。
+例如，可以通过p.isPrototypeOf（o）来检测p是否是o的原型：var p = {x:1};       */                   
+// 定义一个原型对象 
+var proto = {x:1};
+var o = Object.create(proto);               // 使用这个原型创建一个对象 
+proto.isPrototypeOf(o)                      // => true:o继承自p 
+Object.prototype.isPrototypeOf(o)       //=> true:p继承自Object.prototype
+
+/* 例6-4中的classof（）函数可以返回传递给它的任意对象的类： */
+console.log("### 6.8.2、类属性");
+function classof(o) {     
+	if (o === null) return "Null";     
+	if (o === undefined) return "Undefined";     
+	return Object.prototype.toString.call(o).slice(8,-1); 
+}
+console.log(classof(proto)); // 返回：Object
+console.log(classof(null));          // => "Null" 
+console.log(classof(1));              // => "Number" 
+console.log(classof(""));            // => "String" 
+console.log(classof(false));          // => "Boolean" 
+console.log(classof({}));             // => "Object" 
+console.log(classof([]));             // => "Array" 
+console.log(classof(/./));            // => "Regexp" 
+console.log(classof(new Date()));     // => "Date" 
+console.log(classof(window));         // => "Window"(这是客户端宿主对象) 
+/* 那些自定义构造函数创建的对象也是一样，类属性也是“Object”，因此对于自定义的类来说，没办法通过类属性来区分对象的类 */
+function f() {};        // 定义一个自定义构造函数 
+classof(new f());       // => "Object"
+
+var App = function() {
+
+};
+var app = new App();
+console.log(classof(app)); // 返回：Object
+
+console.log("### 6.8.3、可扩展性");
+/* 可扩展属性的目的是将对象“锁定”，以避免外界的干扰。 */
+var o683 = {x:1};
+console.log(Object.isExtensible(o683)); // true
+Object.preventExtensions(o683);
+console.log(Object.isExtensible(o683)); // false
+o683.y = 2;
+console.log(o683.y); // undefined
+
+// 创建一个封闭对象，包括一个冻结的原型和一个不可枚举的属性 
+var o = Object.seal(Object.create(Object.freeze({x:1}), {y: {value: 2, writable: true}}));
+
+/* 6.9 序列化对象 */
+/* 对象序列化（serialization）是指将对象的状态转换为字符串，也可将字符串还原为对象。
+ECMAScript 5提供了内置函数JSON.stringify（）和JSON.parse（）用来序列化和还原JavaScript对象。 */
+o = {x:1, y:{z:[false,null,""]}};       // 定义一个测试对象 
+s = JSON.stringify(o);                  // s是 '{"x":1,"y":{"z":[false,null,""]}}' 
+p = JSON.parse(s);                      // p是o的深拷贝
 
 /* 6.10 对象方法 */
 o.toString(); // 返回'[object Object]'
@@ -299,8 +358,6 @@ var date = new Date(); // Mon Sep 13 2021 14:05:11 GMT+0800 (中国标准时间)
 date.toLocaleString(); // 返回'2021/9/13 下午2:05:11'
 date.toLocaleDateString(); // 返回'2021/9/13'
 date.toLocaleTimeString(); // 返回'下午2:05:11'
-
-var s = 3;
 
 /* Date.prototype.toJSON() */
 var date = new Date();
