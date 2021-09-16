@@ -5,21 +5,19 @@
 		<title></title>
 		<script type="application/javascript" src="script/dayobject/create.js"></script>
 		<script type="application/javascript" src="script/dayclass/range.js"></script>
+		<style type="text/css">
+			canvas {
+				border: medium double black;
+			}
+		</style>
 	</head>
 	<body>
-		<input type="button" onclick="test()" value="点击"/>
+		<canvas id="canvas" width="500" height="200">
+			你的浏览器不支持<code>canvas</code>元素；
+		</canvas>
 	</body>
 	<script type="application/javascript">
-		function test(){
-			debugger
-			alert("OK");
-		};
-	
-		function myFunction() {
-		  document.getElementById("demo").innerHTML = "Hello World";
-		  debugger
-		  alert("OK");
-		}
+		var ctx = document.getElementById("canvas").getContext("2d");
+		ctx.fillRect(10, 10, 50, 50);
 	</script>
-	
 </html>
