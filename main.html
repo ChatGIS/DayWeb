@@ -12,12 +12,25 @@
 		</style>
 	</head>
 	<body>
-		<canvas id="canvas" width="500" height="200">
+		<label>长度</label><input id="hei" />
+		<label>宽度</label><input id="wei" />
+		<button id = "btn" onclick="myFunction()">点</button>
+		<canvas id="canvas_icon" width="500" height="200">
 			你的浏览器不支持<code>canvas</code>元素；
 		</canvas>
 	</body>
 	<script type="application/javascript">
-		var ctx = document.getElementById("canvas").getContext("2d");
-		ctx.fillRect(10, 10, 50, 50);
+		var clearX = 1000;
+		var clearY = 1000;
+		var ctx = document.getElementById("canvas_icon").getContext("2d");
+		
+		
+		function myFunction(){
+			var btn = document.getElementById("hei").value;
+			var wei = document.getElementById("wei").value;
+			ctx.clearRect(0, 0, clearX, clearY);
+			ctx.fillRect(10, 10, wei, btn);
+		}
+
 	</script>
 </html>
