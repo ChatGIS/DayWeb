@@ -369,6 +369,65 @@ console.log(jsonDate); //2021-09-13T06:20:46.973Z
 var backToDate = new Date(jsonDate);
 console.log(backToDate); //Mon Sep 13 2021 14:20:46 GMT+0800 (中国标准时间)
 
+/* 6.6 属性getter和setter */
+console.log("## 6.6 属性getter和setter");
+var point66 = {         
+	//x和y是普通的可读写的数据属性         
+	x: 1.0,         
+	y: 1.0,         
+	// r是可读写的存取器属性，它有getter和setter.         
+	// 函数体结束后不要忘记带上逗号         
+	get r() {
+		return Math.sqrt(this.x*this.x + this.y*this.y); 
+	},         
+	set r(newvalue) {           
+		var oldvalue = Math.sqrt(this.x*this.x + this.y*this.y);           
+		var ratio = newvalue/oldvalue;           
+		this.x *= ratio;           
+		this.y *= ratio;         
+	},         
+	//theta是只读存取器属性，它只有getter方法        
+	 get theta() { 
+		 return Math.atan2(this.y, this.x); 
+	 } 
+};
 
+var qPoint = inherit(point66);     // 创建一个继承getter和setter的新对象 
+qPoint.x = 1, qPoint.y = 1;       // 给q添加两个属性 
+console.log(qPoint.r);       // 可以使用继承的存取器属性 console.log(q.theta);
+
+qPoint.r =10000 // 调用setter方法
+console.log(qPoint.x); // 7071.067811865475
+console.log(qPoint.y); // 7071.067811865475
+
+/* 场景1、智能检测属性的写入值以及在每次属性读取时返回不同值 */
+// 这个对象产生严格自增的序列号
+ var serialnum = {         // 这个数据属性包含下一个序列号         
+	 // $符号暗示这个属性是一个私有属性         
+	 $n: 0,         
+	 // 返回当前值，然后自增         
+	 get next() { return this.$n++; },         
+	 // 给n设置新的值，但只有当它比当前值大时才设置成功         
+	 set next(n) {                 
+		 if (n >= this.$n) this.$n = n;                 
+		 else throw "序列号的值不能比当前值小";         
+		 } 
+};
+
+/* 最后我们再来看一个例子，这个例子使用getter方法实现一种“神奇”的属性： */
+// 这个对象有一个可以返回随机数的存取器属性 
+// 例如，表达式"random.octet"产生一个随机数 
+// 每次产生的随机数都在0~255之间 
+var random = {         
+	get octet() { 
+		return Math.floor(Math.random()*256); 
+	},         
+	get uint16() { 
+		return Math.floor(Math.random()*65536); 
+	},         
+	get int16() { 
+		return Math.floor(Math.random()*65536)-32768; 
+	} 
+};
 
 debugger
