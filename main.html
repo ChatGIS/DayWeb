@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<script type="application/javascript" src="script/dayobject/create.js"></script>
+		<script type="application/javascript" src="script/dayobject/object5.js"></script>
+		<script type="application/javascript" src="script/dayobject/object6.js"></script>
 		<script type="application/javascript" src="script/dayclass/range.js"></script>
 		<style type="text/css">
 			canvas {
@@ -15,6 +16,7 @@
 		<label>长度</label><input id="hei" />
 		<label>宽度</label><input id="wei" />
 		<button id = "btn" onclick="myFunction()">点</button>
+		<button id = "btn" onclick="download()">下</button>
 		<canvas id="canvas_icon" width="500" height="200">
 			你的浏览器不支持<code>canvas</code>元素；
 		</canvas>
@@ -32,5 +34,9 @@
 			ctx.fillRect(10, 10, wei, btn);
 		}
 
+		function download(){
+			var dataURL = document.getElementById("canvas_icon").toDataURL();
+			console.log(dataURL);
+		}
 	</script>
 </html>
