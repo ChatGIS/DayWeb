@@ -61,4 +61,45 @@ let c = Object.create(unitcircle);    // c继承属性r
 c.x = 1; c.y = 1;               // c定义两个属性 
 c.r = 2;                        // c覆盖继承来的属性 
 console.log(unitcircle.r);                   // => 1，原型对象没有修改
+
+console.log(Object.getOwnPropertyDescriptor(point,"x")); // => {value: 0, writable: true, enumerable: true, configurable: true}
+
+const random = {
+	get octet(){
+		return Math.floor(Math.random() * 256)
+	}
+}
+console.log(Object.getOwnPropertyDescriptor(random,"octet")); // => {set: undefined, enumerable: true, configurable: true, get: ƒ}
+
+/* 6.10　对象字面量扩展语法 */
+/* 6.10.1　简写属性 */
+let x = 1, y = 2;
+// 假设变量x和y中保存着值，而你想创建一个具有属性x和y且值分别为相应变量值的对象。如果使用基本的对象字面量语法，需要把每个标识符重复两次：
+let o01 = {
+	x : x,
+	y : y,
+};
+// 在ES6及之后，可以删掉其中的分号和一份标识符，得到非常简洁的代码：
+let o02 = {x, y};
+
+/* 6.10.2　计算的属性名 */
+const PROPERTY_NAME = "p1";
+function computerPropertyName(){
+	return "p" + 2;
+}
+// 有时候，我们需要创建一个具有特定属性的对象，但该属性的名字不是编译时可以直接写在源代码中的常量。
+// 相反，你需要的这个属性名保存在一个变量里，或者是调用的某个函数的返回值。
+// 不能对这种属性使用基本对象字面量。为此，必须先创建一个对象，然后再为它添加想要的属性：
+let o11 = {};
+o11[PROPERTY_NAME] = 1;
+o11[computerPropertyName()] = 2;
+
+// 而使用ES6称为计算属性的特性可以更简单地创建类似对象，这个特性可以让你直接把前面代码中的方括号放在对象字面量中：
+let o12 = {
+	[PROPERTY_NAME] : 1,
+	[computerPropertyName()] : 2,
+}
+
+/* 6.10.3　符号作为属性名 */
+
 debugger
