@@ -27,6 +27,6 @@ var f = function fact(x) {
 	else return x*fact(x-1); 
 }; 
 // 函数表达式也可以作为参数传给其他函数 
-data.sort(function(a,b) { return a-b; }); 
+// data.sort(function(a,b) { return a-b; }); 
 //函数表达式有时定义后立即调用 
 var tensquared = (function(x) {return x*x;}(10));

@@ -490,6 +490,3 @@ console.log(jsonDate); //2021-09-13T06:20:46.973Z
 
 var backToDate = new Date(jsonDate);
 console.log(backToDate); //Mon Sep 13 2021 14:20:46 GMT+0800 (中国标准时间)
-
-
-debugger
