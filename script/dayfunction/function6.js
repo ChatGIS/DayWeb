@@ -22,4 +22,37 @@ const fun3 = x => {value : x};
 console.log(fun3(3)); // undefined; 错误：什么也不返回
 // const fun4 = x => { v: x, w: x}; // Uncaught SyntaxError: Unexpected token ':'
 // fun4(4); 
+
+let fun5 = null,  x5 = 0;
+try {
+	fun5(x5++); // 因为f是null所以抛出TypeError
+} catch(e){
+	console.log(`fun5报错输出：${x5}`); // => 1 :抛出异常前x发生了递增
+}
+
+fun5?.(x++); // => undefined: f是null，但不会抛出异常
+console.log(`fun5条件式调用短路测试：${x5}`); // => 1 :因为短路，递增不会发生
+
+
+let obj1 = {                             // 对象o     
+	m: function() {                   // 对象中的方法m()         
+		let self = this;              // 将this的值保存至一个变量中          
+		console.log(this === obj1);      // 输出true，this就是这个对象o         
+		f();                          // 调用嵌套函数f()          
+		function f() {                // 定义一个嵌套函数f()              
+			console.log(this === obj1); // "false": this的值是全局对象或undefined              
+			console.log(self === obj1); // "true": self指外部函数的this值         
+		};
+	    const f2 = () => {
+			console.log(this === obj1); // "true": 因为箭头函数继承this  
+		}
+		f2();
+		
+		const f3 = (function(){
+			console.log(this === obj1); // "true": 因为我们把这个函数绑定到了外部的this
+		}).bind(this);
+		f3();
+	},
+}; 
+obj1.m();  
 debugger

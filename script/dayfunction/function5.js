@@ -59,4 +59,5 @@ var oself = {                             // 对象o
 	}         ,
 }; 
 oself.m();                                // 调用对象o的方法m()
+  
 debugger
