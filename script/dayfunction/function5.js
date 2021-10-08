@@ -59,5 +59,24 @@ var oself = {                             // 对象o
 	}         ,
 }; 
 oself.m();                                // 调用对象o的方法m()
-  
+
+/* 闭包 */
+var scope = "global scope"; // 全局变量
+function checkscope(){
+	var scope = "local scope"; // 局部变量
+	function f(){
+		return scope;
+	}
+	return f();
+}
+console.log(checkscope()); // =>"local scope"
+
+function checkscope1(){
+	var scope = "local scope"; // 局部变量
+	function f(){
+		return scope;
+	}
+	return f;
+}
+console.log(checkscope1()()); // =>"local scope"
 debugger
