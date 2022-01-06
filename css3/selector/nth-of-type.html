@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*选择属于其父元素第二个 <p> 元素的每个 <p> 元素。*/
+        p:nth-of-type(2) {
+            background-color: red;
+        }
+
+        /*选择属于其父元素第二个 <p> 元素的每个 <p> 元素。*/
+        p:nth-last-of-type(2) {
+            background-color: yellow;
+        }
+
+        p {
+            width: 100px;
+            height: 50px;
+        }
+
+        div {
+            width: 30%;
+            margin: 30px;
+            border: thin solid black;
+        }
+
+        body {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>one</p>
+        <p>two</p>
+        <p>three</p>
+        <p>four</p>
+        <p>five</p>
+    </div>
+    <div>
+        <p>two-one</p>
+        <p>two-two</p>
+        <p>two-three</p>
+        <p>two-four</p>
+    </div>
+</body>
+</html>
