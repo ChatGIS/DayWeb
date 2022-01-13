@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关系选择器</title>
+    <style>
+        #wrap p {
+            color: #FF0000;
+        }
+
+        #wrap2>p {
+            color: #00FF00;
+        }
+
+        #wrap3 {
+            width: 200px;
+            height: 200px;
+        }
+
+        #wrap3 h3+p {
+            text-align: center;
+        }
+
+        #wrap4 h3~p {
+            text-align: center;
+        }
+
+        h4,h5,h6 {
+            color: #00FF00;
+        }
+
+        strong {
+            color: #00EEFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>关系选择器</h1>
+    <h2>包含选择器</h2>
+    <div id="wrap">
+        <p>div#wrap中第1个p元素</p>
+        <p>div#wrap中第2个p元素</p>
+        <div id="child-wrap">
+            <p>div#child-wrap中的p元素</p>
+        </div>
+    </div>
+    <h2>子选择器</h2>
+    <div id="wrap2">
+        <p>div#wrap2中第1个p元素</p>
+        <p>div#wrap2中第2个p元素</p>
+        <div id="child-wrap2">
+            <p>div#child-wrap2中的p元素</p>
+        </div>
+    </div>
+    <strong>优点：相对于包含选择器，匹配的范围更小，从层级结构上看，匹配目标更明确。</strong>
+    <h2>相邻选择器</h2>
+    <div id="wrap3">
+        <h3 id="title">标题</h3>
+        <div>
+            <p>div中的p</p>
+        </div>
+        <p>作者</p>
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+    </div>
+    <p>
+        <strong>1、紧跟在h3后面的第一个p元素居中，h3并不居中 <br>
+            2、紧跟在h3后面的如果不是p元素，后面再有p元素也不生效
+        </strong>
+    </p>
+    <h2>兄弟选择器</h2>
+    <div id="wrap4">
+        <h3>标题</h3>
+        <p>作者</p>
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+        <div>
+            <p>div中的p</p>
+        </div>
+    </div>
+    <strong>紧跟在h3后面的每一个p元素居中，h3并不居中</strong>
+    <h2>分组选择器</h2>
+    <h4>h4</h4>
+    <h5>h5</h5>
+    <h6>h6</h6>
+</body>
+</html>
