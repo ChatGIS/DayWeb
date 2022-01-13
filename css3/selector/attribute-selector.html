@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性选择框</title>
+    <style>
+        /* 具有id的a元素 */
+        .nav a[id] {
+            background-color: blue;
+            color: yellow;
+            font-weight: bold;
+        }
+        /* 同时具有id和target的a元素*/
+        .nav a[id][target] {
+            background-color: #00FF00;
+        }
+
+        .nav a[id="first"] {
+            color: red;
+        }
+
+        .nav a[title~="website"] {
+            color: #FF00AA;
+        }
+
+        .nav a[lang|="zh"] {
+            background-color: gray;
+            color: yellow;
+        }
+
+        .nav a[title^="http"] {
+            background-color: blueviolet;
+        }
+
+        .nav a[title$="site"] {
+            background-color: black;
+        }
+
+        .nav a[title*="cde"] {
+            padding: 20px;
+        }
+
+        p {
+            color: #00EEFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="#1" class="links item first" title="1" target="_blank" id="first">1</a>
+        <a href="#2" class="links active item" title="second website" target="_blank" lang="zhongwen">2</a>
+        <a href="#3" class="links item" title="3" lang="zh">3</a>
+        <a href="#4" class="links item" target="_blank" lang="en-US">4</a>
+        <a href="#5" class="links item" title="fifth website">5</a>
+        <a href="#6" class="links item" title="6" lang="zh-CN">6</a>
+        <a href="#7" class="links item" title="http://baidu.com" lang="en-US">7</a>
+        <a href="#8" class="links item" title="ali.site" lang="ceshizh-CN">8</a>
+        <a href="#9" class="links item" title="abcdef">9</a>
+        <a href="#10" class="links item last" id="last">10</a>
+        <br>
+
+    </div>
+    <div>
+        <p>div.nav下面具有id属性的a元素:.nav a[id]</p>
+        <p>div.nav下面同时具有id和target属性的a元素:.nav a[id][target]</p>
+        <p>div.nav下面id=first的a元素:.nav a[id="first"]</p>
+        <p>div.nav下面title属性包含单词“website”的a元素:.nav a[title~="website"]</p>
+        <p>div.nav下面lang属性等于zh或者以zh-开头的a元素:.nav a[lang|="zh"]</p>
+        <p>以下三种为css3新增</p>
+        <p>div.nav下面title属性的值以"http"开头的a元素:.nav a[title^="http"]</p>
+        <p>div.nav下面title属性的值以"site"结尾的a元素:.nav a[title$="site"]</p>
+        <p>div.nav下面title属性的值包含子字符串“cde”的a元素:.nav a[title*="cde"]</p>
+
+    </div>
+</body>
+</html>
