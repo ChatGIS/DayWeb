@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪类选择器</title>
+    <style>
+        .child p:first-child, .child p:last-child {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>1、结构伪类</h1>
+    <h2>1.2、:first-child、 :last-child</h2>
+    <h3>只有当p元素是其父级的第一个子级的时候才生效，如果第一个元素不是父级的第一个元素，则不生效</h3>
+    <div class="child">
+        <div>这是一个div</div>
+        <p>one</p>
+        <p>two</p>
+        <p>three</p>
+        <p>four</p>
+        <p>five</p>
+    </div>
+    <div class="child">
+        <p>two-one</p>
+        <p>two-two</p>
+        <p>two-three</p>
+        <p>two-four</p>
+    </div>
+</body>
+</html>
