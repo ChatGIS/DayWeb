@@ -4,16 +4,37 @@
     <meta charset="UTF-8">
     <title>伪类选择器</title>
     <style>
-        .child p:first-child, .child p:last-child {
+        .child div:first-child, .child p:last-child {
             color: red;
         }
-
+		.nth-child :nth-child(2), .nth-child :nth-last-child(2) {
+			color: red;
+		}
+		.type :first-of-type, .type :last-of-type {
+			color: red;
+		}
+		.nth-type :nth-of-type(2), .nth-type :nth-last-child(2) {
+			color: red;
+		}
+		.only-div :only-child {
+			color: red;
+		}
+		.only-div :only-of-type {
+			color: orangered;
+		}
+		.empty-div p:empty {
+			display: none;
+		}
+		h3 {
+			color: #0000FF;
+		}
     </style>
 </head>
 <body>
     <h1>1、结构伪类</h1>
-    <h2>1.2、:first-child、 :last-child</h2>
-    <h3>只有当p元素是其父级的第一个子级的时候才生效，如果第一个元素不是父级的第一个元素，则不生效</h3>
+	
+    <h2>1.1、:first-child、 :last-child</h2>
+    <h3>.child p:first-child  只有当p元素是其父级的第一个子级的时候才生效，如果第一个元素不是父级的第一个元素，则不生效</h3>
     <div class="child">
         <div>这是一个div</div>
         <p>one</p>
@@ -28,5 +49,81 @@
         <p>two-three</p>
         <p>two-four</p>
     </div>
+	
+	<h2>1.2、:nth-of-child、:nth-last-child</h2>
+	<div class="nth-child">
+	    <div>这是一个div</div>
+	    <p>one</p>
+	    <p>two</p>
+	    <p>three</p>
+	    <p>four</p>
+	    <p>five</p>
+	</div>
+	<div class="nth-child">
+	    <p>two-one</p>
+	    <p>two-two</p>
+	    <p>two-three</p>
+	    <p>two-four</p>
+	</div>
+	
+	<h2>1.3、:first-of-type、:last-of-type</h2>
+	<h3>同类型元素中第一个元素的样式，如果有多种元素，则每种元素的第一个都会使用样式</h3>
+	<div class="type">
+	    <div>这是一个div</div>
+		<span>这是一个span</span>
+	    <p>one</p>
+	    <p>two</p>
+	    <p>three</p>
+	    <p>four</p>
+	    <p>five</p>
+	</div>
+	<div class="type">
+	    <p>two-one</p>
+	    <p>two-two</p>
+	    <p>two-three</p>
+	    <p>two-four</p>
+	</div>
+	
+	<h2>1.4、:nth-of-type、:nth-last-type</h2>
+	<h3>同类型的第n个元素样式，如果有多个类型的元素，则每个类型的元素第n个元素都会使用样式</h3>
+	<div class="nth-type">
+	    <div>这是一个div</div>
+		<div>这是第二个div</div>
+		<span>这是一个span</span>
+	    <p>one</p>
+	    <p>two</p>
+	    <p>three</p>
+	    <p>four</p>
+	    <p>five</p>
+	</div>
+	<div class="nth-type">
+	    <p>two-one</p>
+	    <p>two-two</p>
+	    <p>two-three</p>
+	    <p>two-four</p>
+	</div>
+	
+	<h2>1.5、.only-child、.only-of-type</h2>
+	<div class="only-div">
+	    <div>这是一个div</div>
+		<div>这是第二个div</div>
+		<span>这是一个span</span>
+	    <p>one</p>
+	    <p>two</p>
+	    <p>three</p>
+	    <p>four</p>
+	    <p>five</p>
+	</div>
+	
+	<h2>1.6、:empty</h2>
+	<h3>:empty用来选择没有任何内容的元素，这里没有内容指的是一点内容都没有，包括空格。</h3>
+	<div class="empty-div">
+		<p>这是第1个p元素</p>
+		<p></p>
+		<P>这是第3个p元素，第2个p元素内容为空</P>
+	</div>
+	
+	<h1>否定伪类</h1>
+	
 </body>
 </html>
