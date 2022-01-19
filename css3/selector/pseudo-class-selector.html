@@ -23,8 +23,37 @@
 			color: orangered;
 		}
 		.empty-div p:empty {
-			display: none;
+			width: 100px;
+			height: 1.25rem;
+			background-color: orangered;
 		}
+		.not-div p:not(.have) {
+			color: red;
+		}
+		.state-div input[type="text"]:enabled {
+			background-color: #00FF00;
+		}
+		.state-div input[type="text"]:disabled {
+			background-color: red;
+		}
+		.state-div input[type="checkbox"]:checked {
+			width: 20px;
+			height: 20px;
+		}
+		.global-div :target {
+			border: 2px solid #0000FF;
+			background-color: #e5eecc;
+		}
+		.dynamic-div a:hover {
+			background-color: #00FF00;
+		}
+		.dynamic-div a:visited {
+			color: gray;
+		}
+		.dynamic-div a:focus {
+			background-color: red;
+		}
+
 		h3 {
 			color: #0000FF;
 		}
@@ -123,7 +152,64 @@
 		<P>这是第3个p元素，第2个p元素内容为空</P>
 	</div>
 	
-	<h1>否定伪类</h1>
+	<h1>2、否定伪类</h1>
+	<h2>2.1、:not</h2>
+	<h3>:not()表示否定选择器，即过滤掉not()函数匹配的特定元素。</h3>
+	<div class="not-div">
+		<p class="have">class="have"</p>
+		<p class="have">class="have"</p>
+		<p>class="have"</p>
+		<p class="have">class="have"</p>
+		<p class="have">class="have"</p>
+	</div>
 	
+	<h1>3、状态伪类</h1>
+	<h2>3.1、:enabled</h2>
+	<h2>3.2、:disabled</h2>
+	<h2>3.3、:checked</h2>
+	<h3>		.state-div input[type="text"]:enabled {
+			background-color: #00FF00;
+		}</h3>
+	<h3>
+		.state-div input[type="text"]:disabled {
+			background-color: red;
+		}</h3>
+	<h3>.state-div input[type="checkbox"]:checked {
+			width: 20px;
+			height: 20px;
+		}</h3>
+	<div class="state-div">
+		<input type="text" name="" value="meng" />
+		<input type="text" value="shisan">
+		<input type="text" value="China" disabled="disabled">
+		<input type="checkbox" name=""  value="男" checked="checked">男</input>
+		<input type="checkbox" name="" value="女">女</input>
+	</div>
+	
+	<h1>4、目标伪类</h1>
+	<h2>4.1、目标伪类</h2>
+	<h3>.global-div :target {
+			border: 2px solid #0000FF;
+			background-color: #e5eecc;
+		}</h3>
+	<div class="global-div">
+		<a href="#content1">点击选中第一段</a>
+		<a href="#content2">点击选中第二段</a>
+		
+		<p id="content1">第一段文字</p>
+		<p id="content2">第二段文字</p>
+	</div>
+
+	<h1>5、动态伪类</h1>
+	<h2>5.1、:link</h2>
+	<h2>5.2、:visited</h2>
+	<h2>5.3、:hover</h2>
+	<h2>5.4、:active</h2>
+	<h2>5.5、:focus</h2>
+	<div class="dynamic-div">
+		<a href="#">链接1</a>
+		<a href="#">链接2</a>
+		<a href="baidu.com">链接3</a>
+	</div>
 </body>
 </html>
