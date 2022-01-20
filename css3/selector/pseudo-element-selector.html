@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素选择器</title>
+    <style>
+        .letter p::first-letter {
+            color: #903;
+            padding: 4px 8px 0 3px;
+            font: 75px/60px Georgia
+        }
+        .line p::first-line {
+            color: #903;
+            font: 16px/18px Georgia
+        }
+        .b-a-div p::after {
+            content: '》';
+            color: blue;
+        }
+         .b-a-div p::before {
+            content: '《';
+            color: blue;
+        }
+        .select-div p::selection {
+            color: #00FF00;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+  <h1>::first-letter</h1>
+  <div class="letter">
+      <p>HTML (the Hypertext Markup Language) and CSS (Cascading Style Sheets) are two of the core technologies
+          for building Web pages. HTML provides the structure of the page, CSS the (visual and aural) layout,
+          for a variety of devices.
+          Along with graphics and scripting,
+          HTML and CSS are the basis of building Web pages and Web Applications. </p>
+  </div>
+
+  <h1>::first-line</h1>
+  <div class="line">
+      <p>CSS is the language for describing the presentation of Web pages, including colors,
+          layout, and fonts. It allows one to adapt the presentation to different types of devices,
+          such as large screens, small screens, or printers. CSS is independent of HTML and
+          can be used with any XML-based markup language.
+          The separation of HTML from CSS makes it easier to maintain sites,
+          share style sheets across pages, and tailor pages to different environments.
+          This is referred to as the separation of structure (or: content) from presentation. </p>
+  </div>
+  <h1>::before ::after</h1>
+  <div class="b-a-div">
+    <p>CSS从入门到精通</p>
+  </div>
+  <h1>::selection</h1>
+  <h4>控制选中文字背景颜色以及文字颜色</h4>
+  <div class="select-div">
+      <p>CSS is the language for describing the presentation of Web pages, including colors,
+          layout, and fonts. It allows one to adapt the presentation to different types of devices,
+          such as large screens, small screens, or printers. CSS is independent of HTML and
+          can be used with any XML-based markup language.
+          The separation of HTML from CSS makes it easier to maintain sites,
+          share style sheets across pages, and tailor pages to different environments.
+          This is referred to as the separation of structure (or: content) from presentation. </p>
+  </div>
+</body>
+</html>
