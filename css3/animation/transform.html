@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+            left: 20px;
+            top: 100px;
+        }
+        .bg {
+            opacity: 0.3;
+            border: dashed 1px red
+        }
+        .change-rotate {
+            border: solid 1px blue;
+            transform-origin: top right;
+            transform: rotate(-45deg);
+        }
+        .change-scale {
+            border: solid 1px yellow;
+            transform: scale(0.5);
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="rotateFun()">2D旋转</button>
+    <img class="bg" src="../assets/imgs/mengshisan.jpg" alt="">
+    <img class="change-rotate" id="drag1"  src="../assets/imgs/mengshisan.jpg" alt="">
+    <img class="change-scale" src="../assets/imgs/mengshisan.jpg" alt="">
+</body>
+<script type="text/javascript">
+    function rotateFun(){
+        document.getElementsByClassName("change-rotate")[0].style.display = "none";
+    }
+</script>
+</html>
