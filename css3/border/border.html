@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <title>边框</title>
     <style>
-        div {
+        .div1 {
             width: 200px; height: 200px;
             border: solid 10px transparent;
-            border-radius: 15px 0 15px 0;
-            border-top-color: #a0a;
+            border-radius: 0px 15px 35px 55px;
+            border-top-color: red;
+            border-right-color: green;
+            border-bottom-color: yellow;
+            border-left-color: blue;
+            /*firefox新版也不支持border渐变色啦*/
+            /*border-top-color: #a0a #999 #897;*/
+        }
+        .div2 {
+            width: 200px; height: 200px;
+            border: 50px solid;
+            border-image: url("../assets/imgs/mengshisan.jpg");
+            border-image-slice: 50;
         }
     </style>
 </head>
 <body>
-    <div></div>
+    <div class="div1"></div>
+    <div class="div2"></div>
 </body>
 </html>
