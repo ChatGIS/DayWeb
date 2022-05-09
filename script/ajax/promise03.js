@@ -1,0 +1,11 @@
+console.log('进入promise模块');
+
+let p1 = new Promise((resolve, reject) => {
+    setTimeout(() => reject(new Error('fail')), 3000)    
+})
+
+let p2 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve(p1), 1000)
+})
+
+p2.then(res => console.log(res)).catch(err => console.log(err))
