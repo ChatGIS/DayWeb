@@ -1,20 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>长度单位</title>
-</head>
-<style>
-    p {
-        background-color: grey;
-        color: white;
-        width: 5cm;
-        font-size: 2fr;
-    }
-</style>
-<body>
-    <p>I like <span>apples</span> and 香蕉</p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>长度单位</title>
+    </head>
+    <style>
+        p {
+            background-color: grey;
+            color: white;
+        }
+        .p1 {
+            width: 5cm;
+        }
+        .p2 {
+            width: 60mm;
+        }
+        .p3 {
+            width: 2in;
+        }
+        .p4 {
+            width: 192px;
+        }
+        .p5 {
+            width: 144pt;
+        }
+        .p6 {
+            width: 12pc;
+        }
+        .p7 {
+            height: 2em;
+            width: 30em;
+        }
+        .p8 {
+            font-size: 20px;
+            height: 2em;
+            width: 30em;
+        }
+        .div1 {
+            font-size: 20px;
+        }
+        .p9 {
+            height: 2em;
+            width: 30em;
+        }
+    </style>
+    <body>
+        <p class="p1">绝对单位：5cm</p>
+        <p class="p2">绝对单位：60mm</p>
+        <p class="p3">绝对单位：2in（1in = 96px = 2.54cm）</p>
+        <p class="p4">绝对单位：96*2px</p>
+        <p class="p5">绝对单位：144pt（1pt = 1/72in）</p>
+        <p class="p6">绝对单位：12pc（1pc = 12pt）</p>
+        
+        <p class="p7">相对单位：height: 2em; width: 30em;</p>
+        <p class="p8">相对单位：font-size: 20px; height: 2em; width: 30em;</p>
+        <div class="div1"><div><p class="p9">相对单位：父元素div的font-size: 20px; height: 2em; width: 30em;</p></div></div>
+    </body>
 </html>
