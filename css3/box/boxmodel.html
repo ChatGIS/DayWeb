@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒模型</title>
+</head>
+<style>
+    #content {
+        box-sizing: content-box;
+
+        background-color: #5ca8b5;
+        height: 100px;
+        width: 100px;
+
+        padding: 10px;
+        border: 10px solid black;
+        margin: 10px;
+    }
+    #border {
+        box-sizing: border-box;
+
+        background-color: #17c1df;
+        height: 100px;
+        width: 100px;
+
+        padding: 10px;
+        border: 10px solid black;
+        margin: 10px;
+    }
+    #overflow {
+        width: 200px;
+        height: 50px;
+        border: 2px dashed red;
+
+    }
+</style>
+<body>
+    <div id="content">content-box</div>
+    <div id="border">border-box</div>
+    <div id="overflow">
+        overflow-x主要是用来定义对水平方向内容溢出的剪切，而overflow-y主要用来定义对垂直方向内容溢出的剪切。
+    </div>
+</body>
+</html>
