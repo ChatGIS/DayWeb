@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+<body>
+    <script>
+        // ES5的写法
+        function Person1(name, age){
+            // 实例属性
+            this.name = name;
+            this.age = age;
+        }
+        // 原型属性
+        Person1.prototype.publicCount = 1;
+        // 原型方法
+        Person1.prototype.getName = function(){
+            return this.name;
+        }
+        const p1 = new Person1('zhangsan', 18);
+        console.log(p1.getName());
+
+        // ES6的写法
+        class Person2{
+            // 原型属性
+            publicCount = 1;
+            constructor(name, age){
+                // 实例属性
+                this.name = name;
+                this.age = age;
+            }
+            // 原型方法
+            getName(){
+                return this.name;
+            }
+        }
+        const p2 = new Person2('lisi', 20);
+        console.log(p2.getName());
+        console.log(typeof Person2);
+
+        console.log(Person1.prototype.publicCount);
+        console.log(Person2.prototype.publicCount);
+        console.log(p2.publicCount);
+    </script>
+</body>
+</html>
