@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保存文件到本地</title>
+</head>
+<body>
+    <h1>保存文件</h1>
+    <script>
+        var data = {
+            name: "bob",
+            age: "12"
+        }
+
+        var jsonData = JSON.stringify(data);
+
+        function download(content, fileName, contentType) {
+            var a = document.createElement("a");
+            var file = new Blob([content], {type: contentType});
+            a.href = URL.createObjectURL(file);
+            a.download = fileName;
+            a.click();
+        }
+        download(jsonData, 'json.txt', 'text/plain');
+        download(jsonData, 'json.json', 'application/json');
+    </script>
+</body>
+</html>
