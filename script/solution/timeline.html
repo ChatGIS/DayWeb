@@ -1,0 +1,115 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>进度条</title>
+    <style>
+		/* 整体样式，消除默认样式 */
+	    body{
+		   margin:0;
+		   padding:0;
+		}
+	    #box{
+		   position:relative;
+		   width:1000px;
+		   height:30px;
+		   margin:100px auto;
+		}	
+		#progress{
+		   position:relative;
+		   width:900px;
+		   height:30px;
+		   background:#999999;
+		   border-radius:8px;
+		   margin:0 auto; 
+		}
+		#progress_head{
+		   width:0px;
+		   height:100%;
+		   border-top-left-radius:8px;
+		   border-bottom-left-radius:8px;
+		   background:#9933CC;
+		   
+		}
+		span{
+		   position:absolute;
+		   width:20px;
+		   height:38px;
+		   background:#9933CC;
+		   top:-4px;
+		   left:0px;
+		   cursor:pointer;
+		}
+		#percentage{
+		   position:absolute;
+		   line-height:30px;
+		   text-align:center;
+		   right:-44px;
+		   top:0;
+		}
+		
+		
+	</style>
+</head>
+<body>
+
+	<!-- 整体盒子 -->
+    <div id="box">
+		  <!-- 进度条整体 -->
+	      <div id="progress">
+			  	<!-- 进度条长度 -->
+		       <div id="progress_head"></div>
+			  	<!-- 进度条移动条 -->
+			   <span id="span"></span>
+		  <div>
+			<!-- 显示数据 -->
+		  <div id="percentage">0%</div>
+	</div>
+
+</body>
+</html>
+<script>
+
+	//js获取节点
+    var oProgress=document.getElementById('progress');
+    var oProgress_head=document.getElementById('progress_head');
+	var oSpan=document.getElementById('span');
+	var oPercentage=document.getElementById('percentage')
+
+	//添加事件  鼠标按下的事件
+    oSpan.onmousedown=function(event){
+	     
+		 var event=event || window.event;
+	     var x=event.clientX-oSpan.offsetLeft;
+
+	     document.onmousemove=function(){
+		     
+			  var event=event || window.event;
+			  var wX=event.clientX-x;
+			  
+			  
+			  if(wX<0)
+			  {
+			      wX=0;
+			  }else if(wX>=oProgress.offsetWidth-20)
+			  {
+			      wX=oProgress.offsetWidth - 20;
+			  }
+			  oProgress_head.style.width=wX+'px';
+			  oSpan.style.left=wX+'px';
+			  
+			  oPercentage.innerHTML=parseInt(wX/(oProgress.offsetWidth-20)*100)+'%';
+			  
+			  
+			  return false;
+		 };
+		 
+		 document.onmouseup=function(){
+		      
+			  document.onmousemove=null;
+			  
+		 };
+		 
+	};
+    
+</script>
