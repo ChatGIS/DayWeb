@@ -28,14 +28,14 @@
 		   height:100%;
 		   border-top-left-radius:8px;
 		   border-bottom-left-radius:8px;
-		   background:#9933CC;
+		   background:#2abd17;
 		   
 		}
-		span{
+		#span{
 		   position:absolute;
 		   width:20px;
 		   height:38px;
-		   background:#9933CC;
+		   background:#3112bb;
 		   top:-4px;
 		   left:0px;
 		   cursor:pointer;
@@ -48,7 +48,36 @@
 		   top:0;
 		}
 		
-		
+		/* 时间线样式 */
+		#timeline{
+		   position: relative;
+		   width: 90%;
+		   height:30px;
+		   margin: 0 5%;
+		   display: flex;
+		}
+		#timelineControl {
+			width: 50px;
+		}
+		#timelineShow {
+			width: calc(100% - 50px);
+		}
+		#timelineBackground{
+			width: calc(100% - 100%/23);
+			height: 30%;
+			background:#999999;
+			border-radius:8px;
+			margin: 0 20px;
+		}
+		#timelineLine{
+		   width:0px;
+		   height:100%;
+		   border-radius:8px;
+		   background: #FFD02C;
+		}
+		#timelineText{
+			display: flex
+		}
 	</style>
 </head>
 <body>
@@ -61,15 +90,30 @@
 		       <div id="progress_head"></div>
 			  	<!-- 进度条移动条 -->
 			   <span id="span"></span>
-		  <div>
+		  </div>
 			<!-- 显示数据 -->
 		  <div id="percentage">0%</div>
 	</div>
 
+    <!-- 时间线整体 -->
+	<div id="timeline">
+		<div id="timelineControl">
+			<button id="timelineButton" onclick="playAuto(1000)">播放</button>
+		</div>
+		<div id="timelineShow">
+			<div id="timelineBackground">
+				<div id="timelineLine"></div>
+			</div>
+			<div id="timelineText"></div>
+		</div>
+	</div>
+	<div>
+		<span id="info"></span>
+	</div>
+	
 </body>
 </html>
 <script>
-
 	//js获取节点
     var oProgress=document.getElementById('progress');
     var oProgress_head=document.getElementById('progress_head');
@@ -77,17 +121,13 @@
 	var oPercentage=document.getElementById('percentage')
 
 	//添加事件  鼠标按下的事件
-    oSpan.onmousedown=function(event){
-	     
+    oSpan.onmousedown=function(event){    
 		 var event=event || window.event;
 	     var x=event.clientX-oSpan.offsetLeft;
 
 	     document.onmousemove=function(){
-		     
 			  var event=event || window.event;
 			  var wX=event.clientX-x;
-			  
-			  
 			  if(wX<0)
 			  {
 			      wX=0;
@@ -99,17 +139,84 @@
 			  oSpan.style.left=wX+'px';
 			  
 			  oPercentage.innerHTML=parseInt(wX/(oProgress.offsetWidth-20)*100)+'%';
-			  
-			  
 			  return false;
 		 };
 		 
 		 document.onmouseup=function(){
-		      
 			  document.onmousemove=null;
-			  
 		 };
 		 
 	};
     
+	/* 
+		时间线方法
+	*/
+	let serial = 0;
+	// 动态生成时间线时间文字
+	function createTimeText(){
+		for(let i = 0; i < 24; i++){
+			const showTime = Date.now() + 3600000 * i; 
+			var spanElem = document.createElement('sapn');
+			spanElem.innerHTML = new Date(showTime).getHours() + ":00"
+			spanElem.id = "timelineText" + i
+			spanElem.className = "timelineText"
+			spanElem.pTime = showTime
+			// spanElem.style.marginRight="6px"
+			spanElem.style.flex=1;
+			spanElem.onclick = function(e){textClick(e,new Date(showTime).getHours())}
+			// spanElem.style.justify-content = "space-between"; 
+			document.getElementById("timelineText").append(spanElem)
+		}
+	}
+	// 周期函数
+	let interval = null;
+	// 自动播放按钮
+	function playAuto(time){
+		let btnText = document.getElementById("timelineButton").innerHTML;
+		if(btnText == "播放"){
+			document.getElementById("timelineButton").innerHTML = "暂停"
+			interval = setInterval(function(){
+				if(serial < 23){
+					serial = serial + 1;
+				} else{
+					serial = 0;
+				}
+				let aHourWidth = document.getElementById("timelineBackground").offsetWidth/23
+				document.getElementById("timelineLine").style.width = aHourWidth * serial + "px"
+
+				
+				const el = document.getElementById('info');
+				const showTime = Date.now() + 3600000 * serial;           
+				el.innerHTML = new Date(showTime).toLocaleDateString() + "  " + new Date(showTime).getHours() + ":00";
+			}, time)
+		} else if(btnText == "暂停"){
+			document.getElementById("timelineButton").innerHTML = "播放"
+			if(interval){
+				clearInterval(interval)
+			}
+		}	
+	}
+	// 时间文本点击
+	function textClick(e,time){
+		// 点击后字体颜色变化
+		className = e.target.className;
+		elems = document.getElementsByClassName(className)
+		for(let i = 0; i < elems.length; i++){
+			elems[i].style.fontWeight = "normal"
+		}
+		e.target.style.fontWeight="bold"
+		// 点击后按钮样式切换
+		let btnText = document.getElementById("timelineButton").innerHTML;
+		if(btnText == "暂停"){
+			document.getElementById("timelineButton").innerHTML = "播放"
+			clearInterval(interval)
+		}
+		// 点击后进度条长度
+		let showTime = e.target.pTime
+		serial = Math.round((showTime - Date.now())/3600000)
+		let aHourWidth = document.getElementById("timelineBackground").offsetWidth/23
+		document.getElementById("timelineLine").style.width = aHourWidth * serial + "px"
+	}
+	// playAuto(1000)
+	createTimeText()
 </script>
