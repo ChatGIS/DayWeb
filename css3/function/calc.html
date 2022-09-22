@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc()函数</title>
+    <style>
+        .banner {
+            position: absolute;
+            left: 40px;
+            width: calc(100% - 80px);
+            border: solid black 1px;
+            box-shadow: 1px 2px;
+            background-color: yellow;
+            padding: 6px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        input {
+            padding: 2px;
+            display: block;
+            width: calc(100% - 1em);
+        }
+
+        #formbox {
+            position: absolute;
+            top: 100px;
+            width: calc(100% / 6);
+            border: 1px solid black;
+            padding: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 示例1 -->
+    <div class="banner">这是一个banner</div>
+    <!-- 示例2 自动调整表单域的大小以适应其容器的大小 -->
+    <div id="formbox">
+        <label>Type something:</label>
+        <input type="text">
+    </div>
+</body>
+</html>
