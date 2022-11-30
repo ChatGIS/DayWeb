@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值</title>
+</head>
+<body>
+    <p>解构赋值语法是一种 Javascript 表达式。可以将数组中的值或对象的属性取出，赋值给其他变量。</p>
+    <script type="text/javascript">
+        /* 
+            基础变量赋值
+        */
+        // const foo = ['one', 'two', 'three'];
+
+        // const [red, yellow, green] = foo;
+        // console.log(red); // "one"
+        // console.log(yellow); // "two"
+        // console.log(green); // "three"
+
+        /* 
+            解构比源更多的元素
+        */
+        // const foo = ['one', 'two'];
+
+        // const [red, yellow, green, blue] = foo;
+        // console.log(red); // "one"
+        // console.log(yellow); // "two"
+        // console.log(green); // undefined
+        // console.log(blue);  //undefined
+
+        /* 
+            交换变量
+         */
+        // let a = 1, b = 3;
+        // [a, b] = [b, a]
+        // console.log(a); // 3
+        // console.log(b); // 1
+
+        // const arr = [1, 2, 3];
+        // [arr[2], arr[1]] = [arr[1], arr[2]];
+        // console.log(arr);
+        /* 
+            解析一个从函数返回的数组
+        */
+        // function f() {
+        //     return [1, 2]
+        // }
+        // const [a, b] = f();
+        // console.log(a);
+        // console.log(b);
+        
+        /* 
+            忽略某些返回值
+        */
+        function f() {
+            return [1, 2, 3];
+        }
+
+        const [a, , b] = f();
+        console.log(a); // 1
+        console.log(b); // 3
+
+        const [c] = f();
+        console.log(c); // 1
+        [,,] = f();  // 忽略全部返回值：好像没啥意义啊
+
+        
+
+    </script>
+</body>
+</html>
