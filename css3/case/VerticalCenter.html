@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>div垂直居中示例</title>
+    <style>
+        .div-parent {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            border: 1px solid black;
+        }
+        .div-child {
+            width: 80px;
+            height: 80px;
+            background-color: red;
+            border: 1px solid black;
+        }
+        #div-p1 {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        #div-p2 {
+            display: flex;
+            align-items: center;
+            /* 定义子级元素水平居中 */
+            justify-content: center;
+        }
+        #div-p3 {
+            position: relative;
+        }
+        #div-c3 {
+            position: absolute;
+            top: 30%;
+        }
+        #div-p4 {
+            position: relative;
+        }
+        #div-c4 {
+            position: absolute;
+            translate: 0 70%;
+        }
+        #div-p5::after {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+        #div-c5 {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        #div-p5 {
+            /* 子div左右居中  */
+            text-align: center;
+        }
+        #div-p6 {
+            display: flex;
+        }
+        #div-c6 {
+            margin: auto 0;
+        }
+        #div-p7 {
+            position: relative;
+        }
+        #div-c7 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h3>方式1、table-cell和vertical-align</h3>
+    <p>CSS 的属性 vertical-align 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。</p>
+    <div id="div-p1" class="div-parent">
+        <div class="div-child">
+        </div>
+    </div>
+    <h3>方式2、felx和align-items</h3>
+    <p>Flexbox 和 CSS 网格布局支持align-items。</p>
+    <p>在Flexbox中，它控制十字轴上项目的对齐方式，在网格布局中，它控制块轴上项目的对齐方式。</p>
+    <div id="div-p2" class="div-parent">
+        <div class="div-child">
+        </div>
+    </div>
+    <h3>方式3、绝对定位和top</h3>
+    <p>当position设置为absolute或fixed时，top属性指定了定位元素上外边距边界与其包含块上边界之间的偏移。</p>
+    <p>给父div设置 position: relative</p>
+    <div id="div-p3" class="div-parent">
+        <div id="div-c3" class="div-child">
+        </div>
+    </div>
+    <h3>方式4、绝对定位和translate</h3>
+    <p>CSS 属性 translate 允许你单独声明平移变换，并独立于 transform 属性</p>
+    <p>给父div设置 position: relative</p>
+    <div id="div-p4" class="div-parent">
+        <div id="div-c4" class="div-child">
+        </div>
+    </div>
+    <h3>方式5、::after伪元素</h3>
+    <div id="div-p5" class="div-parent">
+        <div id="div-c5" class="div-child">
+        </div>
+    </div>
+    <h3>方式6、flex和margin</h3>
+    <div id="div-p6" class="div-parent">
+        <div id="div-c6" class="div-child">
+        </div>
+    </div>
+    <h3>方式7、绝对定位和0</h3>
+    <div id="div-p7" class="div-parent">
+        <div id="div-c7" class="div-child">
+        </div>
+    </div>
+</body>
+</html>
