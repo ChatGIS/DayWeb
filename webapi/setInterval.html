@@ -16,26 +16,49 @@
     </style>
 </head>
 <body>
-    <h3><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval" target="_blank" rel="noopener noreferrer">参考链接</a></h3>
+    <h3><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval" target="_blank" rel="noopener noreferrer">setInterval参考链接</a></h3>
+    <h3>Demo1、基础示例</h3>
+    <p>F12控制台轮询打印</p>
+    <button id="start1">Start</button>
+    <button id="stop1">Stop</button>
+    <h3>Demo2、文本颜色切换</h3>
     <div id="my_box">
         <h3>Hello World</h3>
     </div>
     <button id="start">Start</button>
     <button id="stop">Stop</button>
+    <h3>Demo3、立即执行轮询效果</h3>
+    <p>setInterval后立即执行函数，不需要等待delay</p>
+    <p>可与Demo1对比查看效果</p>
+    <button id="liji">立即执行</button>
+    <button id="quxiao">取消立即执行</button>
       
     <script>
+        let interval1;
+        let nIntervId;
+        let ljIntervId;
         /* 
          * 示例1，基本语法 
         */
-        const intervalID  = setInterval(myCallback, 1500, 'param1', 'param2')
-        function myCallback(a, b){
+        const myCallback = (a, b) => {
             console.log(a);
             console.log(b);
         }
+        const createInterval = () => {
+            if(!interval1) {
+                interval1  = setInterval(myCallback, 5000, 'param1', 'param2')
+            }
+        }
+        const clearCarousel = () => {
+            if(interval1) {
+                clearInterval(interval1);
+                interval1 = null;
+            }
+        }
+
         /* 
          * 示例2，文本颜色的切换
         */ 
-        let nIntervId;
         function changeColor() {
             // 检查是否已设置interval
             if (!nIntervId) {
@@ -52,14 +75,38 @@
             }
         }
 
+        /* 
+        * 示例3，立即执行
+        */
         function stopTextColor() {
             clearInterval(nIntervId);
             // 从变量中释放我们的intervId
             nIntervId = null;
         }
 
+        function ljzx() {
+            console.log('进入轮询函数')
+            if (!ljIntervId) {
+                ljIntervId = setInterval((func = () => {
+                    console.log("轮询ing")
+                    return func
+                })(), 3000);
+            }
+        }
+        function qxLjzx() {
+            clearInterval(ljIntervId);
+            // 从变量中释放我们的intervId
+            ljIntervId = null;
+        }
+        document.getElementById("start1").addEventListener("click", createInterval);
+        document.getElementById("stop1").addEventListener("click", clearCarousel);
+
         document.getElementById("start").addEventListener("click", changeColor);
         document.getElementById("stop").addEventListener("click", stopTextColor);
+
+        document.getElementById("liji").addEventListener("click", ljzx);
+        document.getElementById("quxiao").addEventListener("click", qxLjzx);
+
     </script>
 </body>
 </html>
