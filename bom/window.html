@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window对象的全局性</title>
+</head>
+<body>
+    <a href="https://www.bilibili.com/video/BV19E411N7ja/?p=2">参考B站视频</a>
+    <p>[window.] 因为所有内容都是这个对象中的，这是一个默认对象，所以在使用时，有时可以省略window.</p>
+    <p>所有全局声明（变量、函数、对象）默认都是window对象中的成员；<b>const和let定义的除外；</b></p>
+    <p>F12控制台参看效果</p>
+    <script>
+        console.log(window)
+        var variable1 = "aaa"
+        let variable2 = "bbb"
+        const variable3 = "ccc"
+
+        function myFun1() {
+            console.log('f_aaa')
+        }
+        const myFun2 = () => {
+            console.log("f_bbb");
+        }
+        window.myFun3 = () => {
+            console.log("f_ccc");
+        }
+
+        console.log(window.variable1)
+        console.log(window.variable2)
+        console.log(window.variable3)
+        
+        window.myFun1()
+        window.myFun3()
+        window.myFun2()
+    </script>
+</body>
+</html>
