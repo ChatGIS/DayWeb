@@ -13,3 +13,4 @@ webapi以[mdn web api](https://developer.mozilla.org/zh-CN/docs/Web/API)接口�
 ## 3、bom
 > BOM相关案例
 - [window对象的全局性](bom/window.html)
+- [window.onload事件](bom/events.html)

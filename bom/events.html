@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容加载事件</title>
+</head>
+<body onload="alert('你好')">
+    <script>
+        // 会报错
+        // document.getElementById("div1").innerHTML="this is div1"
+        // window.onload不报错; 而且一个页面只支持一个window.onload
+        window.onload = function() {
+            document.getElementById("div1").innerHTML="this is div1"
+        }
+        function demo() {
+            document.getElementById("div1").innerHTML="button click ok"
+        }
+    </script>
+    <p>页面加载事件window.onload，也可以在body中添加onload事件，但是优先级低于window.onload</p>
+    <button onclick="demo()">显示效果</button>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <script>
+        document.getElementById("div2").innerHTML="this is div2"
+    </script>
+    
+</body>
+</html>
