@@ -15,3 +15,4 @@ webapi以[mdn web api](https://developer.mozilla.org/zh-CN/docs/Web/API)接口�
 - [window对象的全局性](bom/window.html)
 - [window.onload事件](bom/events.html)
 - [window宽、高属性](bom/whProperties.html)
+- [window对话框方法](bom/dialogMethods.html)
