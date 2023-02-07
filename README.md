@@ -9,7 +9,7 @@ webapi以[mdn web api](https://developer.mozilla.org/zh-CN/docs/Web/API)接口�
 ### 样式案例汇总
 - [CSS实现垂直居中方案](css3/case/VerticalCenter.html)
 
-## 3、bom
+## 3、BOM
 > BOM相关案例
 - [window对象的全局性](bom/window.html)
 - [window.onload事件](bom/events.html)
