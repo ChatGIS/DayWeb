@@ -3,7 +3,6 @@
 
 ## 1、 Web API
 webapi以[mdn web api](https://developer.mozilla.org/zh-CN/docs/Web/API)接口说明参考为基础，整理实现对应的接口deom。
-- [setInterval、clearInterval](webapi/setInterval.html)：基础使用、立即执行
 - storage
 
 ## 2、CSS
@@ -16,3 +15,4 @@ webapi以[mdn web api](https://developer.mozilla.org/zh-CN/docs/Web/API)接口�
 - [window.onload事件](bom/events.html)
 - [window宽、高属性](bom/whProperties.html)
 - [window对话框方法](bom/dialogMethods.html)
+- [☆ 定时器](bom/timer.html)：setInterval、setTimeout、立即执行
