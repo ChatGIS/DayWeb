@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子窗口</title>
+</head>
+<body>
+    <h2>我是子窗口</h2>
+    <button onclick="controlParentWindow('red')">red</button>
+    <button onclick="controlParentWindow('green')">green</button>
+    <button onclick="controlParentWindow('yellow')">yellow</button>
+    <button onclick="controlParentWindow('black')">black</button>
+    <button onclick="controlParentWindow('gray')">gray</button>
+    <script>
+        // 控制父窗口
+        const controlParentWindow = color => {
+            opener.document.bgColor = color
+            opener.alert("切换颜色为" + color)
+        }
+    </script>
+</body>
+</html>

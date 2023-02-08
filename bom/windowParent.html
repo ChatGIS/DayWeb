@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open</title>
+</head>
+<body>
+    <button onclick="openWindow('red')">red</button>
+    <button onclick="openWindow('green')">green</button>
+    <button onclick="openWindow('yellow')">yellow</button>
+    <button onclick="closeWindow('yellow')">关闭</button>
+    <script>
+        // 通过服务器打开页面，而不能通过直接打开文件的方式
+        var childWindow = open("windowChild.html", "_black", "width=300,height=300,top=100,left=400,titlebar=no")
+        // strWindowFeatures部分参数如titlebar等在chrome不生效,ie生效
+        const openWindow = (color) => {
+            childWindow.document.body.bgColor = color
+        }
+        const closeWindow = () => {
+            childWindow.close()
+        }
+    </script>
+</body>
+</html>

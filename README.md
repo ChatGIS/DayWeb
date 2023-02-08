@@ -16,3 +16,4 @@ webapi以[mdn web api](https://developer.mozilla.org/zh-CN/docs/Web/API)接口�
 - [window宽、高属性](bom/whProperties.html)
 - [window对话框方法](bom/dialogMethods.html)
 - [☆ 定时器](bom/timer.html)：setInterval、setTimeout、立即执行
+- [open()父子页面之间相互操作](bom/windowParent.html)：opener
