@@ -10,7 +10,7 @@ webapi以[mdn web api](https://developer.mozilla.org/zh-CN/docs/Web/API)接口�
 - [CSS实现垂直居中方案](css3/case/VerticalCenter.html)
 
 ## 3、BOM
-> BOM相关案例
+> BOM是使用JavaScript开发Web应用程序的核心
 - [window对象的全局性](bom/window.html)
 - [window.onload事件](bom/events.html)
 - [window宽、高属性](bom/whProperties.html)

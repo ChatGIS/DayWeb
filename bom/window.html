@@ -9,7 +9,7 @@
 <body>
     <a href="https://www.bilibili.com/video/BV19E411N7ja/?p=2">参考B站视频</a>
     <p>[window.] 因为所有内容都是这个对象中的，这是一个默认对象，所以在使用时，有时可以省略window.</p>
-    <p>所有全局声明（变量、函数、对象）默认都是window对象中的成员；<b>const和let定义的除外；</b></p>
+    <p style="color: red;">通过var声明的所有全局变量、函数都会变成window对象的属性和成员；<b>const和let定义的除外；</b></p>
     <p>F12控制台参看效果</p>
     <script>
         console.log(window)
