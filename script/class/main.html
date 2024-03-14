@@ -7,43 +7,47 @@
     <title>Class</title>
 </head>
 <body>
+    <script src="./CMap.js"></script>
     <script>
-        // ES5的写法
-        function Person1(name, age){
-            // 实例属性
-            this.name = name;
-            this.age = age;
-        }
-        // 原型属性
-        Person1.prototype.publicCount = 1;
-        // 原型方法
-        Person1.prototype.getName = function(){
-            return this.name;
-        }
-        const p1 = new Person1('zhangsan', 18);
-        console.log(p1.getName());
+        const cMap = new CMap(0, 0)
+        const cMap1 = new CMap(1, 1)
+        console.log(cMap.lon, '000000000000000');
+        console.log(cMap1.lon, '11111111111111');
+        cMap.getLon()
+        cMap1.getLon()
 
-        // ES6的写法
-        class Person2{
-            // 原型属性
-            publicCount = 1;
-            constructor(name, age){
-                // 实例属性
-                this.name = name;
-                this.age = age;
-            }
-            // 原型方法
-            getName(){
-                return this.name;
+        class ChildMap extends CMap {
+
+        }
+        const childMap = new ChildMap(3, 3)
+        console.log(childMap, '33333333333333')
+        console.log(typeof clildMap)
+        console.log(typeof ClildMap)
+
+        // static静态测试
+        class StaticClass {
+            static a = 'a';
+            b = 'b'
+        }
+        console.log(StaticClass.a);
+        console.log(StaticClass.b);
+        const staticClass = new StaticClass()
+        console.log(staticClass.a);
+        console.log(staticClass.b);
+        // 私有属性
+        class PrivateClass {
+            #a = 'a'
+            b = 'b'
+            getPrivateAttr() {
+                console.log(this.#a, '方法调用私有属性');
             }
         }
-        const p2 = new Person2('lisi', 20);
-        console.log(p2.getName());
-        console.log(typeof Person2);
-
-        console.log(Person1.prototype.publicCount);
-        console.log(Person2.prototype.publicCount);
-        console.log(p2.publicCount);
+        const privateClass = new PrivateClass()
+        console.log(privateClass.a);
+        console.log(privateClass.b);
+        console.log(PrivateClass.b);
+        console.log(PrivateClass.b);
+        privateClass.getPrivateAttr()
     </script>
 </body>
 </html>
